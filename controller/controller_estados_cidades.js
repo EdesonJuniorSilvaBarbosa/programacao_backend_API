@@ -75,9 +75,10 @@ const getListCidades = function(siglaEstado){
 
 };
 
-
-//console.log(getListEstados())
-//console.log(getListCidades('AC'))
+module.exports = {
+    getListEstados,
+    getListCidades
+}
 
 
 
