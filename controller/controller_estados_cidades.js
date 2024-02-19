@@ -38,6 +38,7 @@ const getListEstados = function(){
     return jsonEstados
 }
 
+
 // função anônima => retorna a lista de cidades pelo Estado
 const getListCidades = function(siglaEstado){
     let sigla = siglaEstado;
@@ -75,10 +76,13 @@ const getListCidades = function(siglaEstado){
 
 };
 
+
 module.exports = {
     getListEstados,
     getListCidades
 }
+
+
 
 
 
