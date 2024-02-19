@@ -37,6 +37,55 @@ app.use((request, response, next) => {
 })
 
 
+//EndPoints: Pontos de escuta da API
+//EndPoints: GET => listar os estados
+app.get('/estados', cors(), async function(request, response, next){
+
+    // import do arquivos de funções
+    let controllerEstados = require('./controller/controller_estados_cidades.js')
+
+    // solicita a lista de estados para a função
+    let estados = controllerEstados.getListEstados()
+
+    // define o que a API deverá retornar
+    if(estados){
+        response.status(200);
+        response.json(estados)
+    }else{
+        response.status(404);
+    }
+
+});
+
+//EndPoints: GET => listar as cidades de um estado
+app.get('/cidades/estado/:uf', cors(), async function(request, response, next){
+
+    let siglaEstado = request.params.uf
+
+    // import do arquivos de funções
+    let controllerEstados = require('./controller/controller_estados_cidades.js')
+
+    // solicita a lista de estados para a função
+    let estados = controllerEstados.getListCidades(siglaEstado)
+
+    // define o que a API deverá retornar
+    if(estados){
+        response.status(200);
+        response.json(estados)
+    }else{
+        response.status(404);
+    }
+
+});
+
+// obrigatorio para fazer a API ficar aguardando ou escutando novas requisições
+app.listen(8080, function(){
+
+    console.log('API funcionando e aguardando requisições');
+
+})
+
+
 
 
 
